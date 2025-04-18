@@ -3,7 +3,7 @@
 
 
 # Question-2
-# 🎵 GPT-2 Lyrics Generator
+## 🎵 GPT-2 Lyrics Generator
 
 This project fine-tunes a pre-trained GPT-2 language model on a small set of custom lyrics and generates new lyrics based on a user prompt. It uses the 🤗 Hugging Face Transformers and Datasets libraries.
 
