@@ -1,6 +1,115 @@
 # DL_Assignment_2
 
+# Question-1
+## 📝 Character-Level English-to-Hindi Transliteration using RNNs
 
+This project implements a sequence-to-sequence character-level transliteration system using TensorFlow/Keras. It maps English words (Latin script) to their Hindi equivalents (Devanagari script) using an encoder-decoder architecture.
+
+---
+
+## 💡 Overview
+
+The system:
+- Loads a parallel dataset of English-Hindi word pairs.
+- Tokenizes at the character level.
+- Pads and encodes sequences.
+- Builds a customizable RNN (LSTM/GRU/SimpleRNN) model.
+- Trains the model on the transliteration task.
+- Predicts transliterations for new input words.
+
+---
+
+## 🛠️ Installation
+
+Install the required packages:
+
+```bash
+pip install pandas numpy tensorflow
+```
+
+---
+
+## 📂 Project Structure
+
+```
+.
+├── hi.translit.sampled.train.tsv   # Dataset file (tab-separated)
+├── transliteration_model.py        # Model and training script
+├── README.md                       # This file
+```
+
+---
+
+## 📑 Dataset Format
+
+Each line in `hi.translit.sampled.train.tsv` contains:
+
+```
+Hindi_word <tab> English_transliteration <tab> Frequency
+```
+
+Example:
+```
+अनु <tab> anu <tab> 12
+```
+
+---
+
+## ⚙️ Model Configuration
+
+```python
+embed_sz = 32        # Embedding size
+units = 64           # Hidden units in RNNs
+depth = 1            # Number of RNN layers
+cell_kind = 'LSTM'   # Options: 'LSTM', 'GRU', 'RNN'
+```
+
+---
+
+## 🧠 Model Architecture
+
+- **Encoder**: Embedding + RNN (LSTM/GRU/RNN)
+- **Decoder**: Embedding + RNN (same kind as encoder)
+- **Output Layer**: Dense with softmax to predict next character
+
+---
+
+## 🏋️ Training
+
+```python
+model.fit([src_input, dec_input], dec_output, batch_size=2, epochs=10)
+```
+
+---
+
+## 🔤 Inference
+
+The `predict()` function allows you to input an English word and receive a predicted Hindi transliteration.
+
+### Example:
+
+```python
+input_word = "anj"
+predicted_hindi = predict(input_word, model, src_vocab, tgt_vocab, rev_tgt)
+print(f"Predicted Hindi Transliteration for '{input_word}': {predicted_hindi}")
+```
+
+**Output:**
+```
+Predicted Hindi Transliteration for 'anj': अंज
+```
+
+---
+
+## ✨ Future Enhancements
+
+- Train with a larger dataset.
+- Implement attention mechanism.
+- Add beam search decoding for better predictions.
+
+
+------
+------
 
 # Question-2
 ## 🎵 GPT-2 Lyrics Generator
